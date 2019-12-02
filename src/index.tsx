@@ -8,13 +8,23 @@ import { createStackNavigator } from 'react-navigation-stack'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 import { createAppContainer } from 'react-navigation'
 import { colors } from './theme'
-// import { MaterialCommunityIcons } from 'react-native-vector-icons'
+import { MaterialCommunityIcons } from 'react-native-vector-icons'
 
 const CitiesNav = createStackNavigator({
-    Cities: { screen: Cities, navigationOptions: { title: 'Cities' } },
-    City: { screen: City, navigationOptions: { title: 'City' } }
+    Cities: { 
+        screen: Cities,
+        navigationOptions: {
+            title: 'Cities'
+        }
+    },
+    City: {
+        screen: City,
+        navigationOptions: ({ navigation }) => ({
+            title: navigation.getParam('title') || 'City'
+        })
+    }
 }, {
-    defaultNavigationOptions: {
+    defaultNavigationOptions: ({ navigation }) => ({
         headerStyle: {
             backgroundColor: colors.primary
         },
@@ -24,12 +34,31 @@ const CitiesNav = createStackNavigator({
             fontWeight: '400'
         },
         headerTintColor: '#fff'
-    }
+    })
 })
 
 const Tabs = createBottomTabNavigator({
-    Cities: { screen: CitiesNav },
-    AddCity: { screen: AddCity }
+    Cities: { 
+        screen: CitiesNav,
+        navigationOptions: {
+            tabBarLabel: null,
+            tabBarIcon: ({ focused, tintColor }) => (
+                <MaterialCommunityIcons style={{ color: focused ? '#000' : tintColor }} name='city' size={30}/>
+            )
+        } 
+    },
+    AddCity: { 
+        screen: AddCity,
+        navigationOptions: {
+            tabBarIcon: ({ focused, tintColor }) => (
+                <MaterialCommunityIcons style={{ color: focused ? '#000' : tintColor }} name='plus' size={30}/>
+            )
+        }
+    }
+}, {
+    tabBarOptions: {
+        showLabel: false
+    }
 })
 
 export default createAppContainer(Tabs)

@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
     View,
     TextInput,
     Text,
     StyleSheet,
     ScrollView,
-    TouchableWithoutFeedback,
     TouchableOpacity
 } from 'react-native'
 
@@ -16,10 +15,11 @@ import CenterMsg from '../components/CenterMsg'
 
 export default function City(props: any) {
     const cityObj = props.navigation.getParam('cityObj')
+    
     const [name, setName] = useState('')
     const [info, setInfo] = useState('')
-    const [location, setLocation] = useState({})
-    // console.log('viewCity: ', cityObj)
+    // console.log('viewCity: ', cityObj) 
+    
     const addLocation = () => {
         if(!name || !info) return
         const location = {
@@ -31,11 +31,15 @@ export default function City(props: any) {
         setName('')
         setInfo('')
     }
+
     return (
         <View style={{ flex: 1 }}>
             {
                 !cityObj.locations.length && <CenterMsg message='No location' />
             }
+            <ScrollView style={{
+                maxHeight: 270
+            }}>
             {
                 cityObj.locations.map((location: Location, idx: number) => (
                     <View key={idx} style={styles.locationContainer}>
@@ -44,6 +48,7 @@ export default function City(props: any) {
                     </View>
                 ))
             }
+            </ScrollView>
             <TextInput
                 value={name}
                 placeholder='location name'
@@ -88,7 +93,8 @@ const styles = StyleSheet.create({
         width: '100%',
         bottom: 104,
         left: 0,
-        color: 'white'
+        color: 'white',
+        paddingLeft: 10
     },
     input2: {
         bottom: 52,

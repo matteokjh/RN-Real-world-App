@@ -45,9 +45,9 @@ export default function App() {
 
   return <Tabs
     screenProps={{
-      cities: cities,
-      addCity: addCity,
-      addLocation: addLocation
+      cities,
+      addCity,
+      addLocation
     }}
   />
 }
