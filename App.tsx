@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { AsyncStorage } from 'react-native';
 
-import { City, Location } from './src/Cities/cityTypes'
+import { CityTypes, Location } from './src/Cities/cityTypes'
 
 import Tabs from './src'
 
@@ -9,16 +9,17 @@ const key = 'cities'
 
 console.disableYellowBox = true
 
+
 export default function App() {
-  const [cities, setCities] = useState<City[]>([])
+  const [cities, setCities] = useState<CityTypes[]>([])
 
   // methods
-  const addCity = (city: City) => {
+  const addCity = (city: CityTypes) => {
     setCities(cities.concat(city))
     AsyncStorage.setItem(key, JSON.stringify(cities.concat(city)))
       .catch((err) => console.log(err))
   }
-  const addLocation = (location: Location, city: City) => {
+  const addLocation = (location: Location, city: CityTypes) => {
     const idx = cities.findIndex(item => item.id === city.id)
     const chosenCity = cities[idx]
     chosenCity.locations.push(location)
@@ -43,11 +44,13 @@ export default function App() {
     func()
   },[])
 
-  return <Tabs
-    screenProps={{
-      cities,
-      addCity,
-      addLocation
-    }}
-  />
+  return (
+    <Tabs
+      screenProps={{
+        cities,
+        addCity,
+        addLocation
+      }}
+    />
+  )
 }

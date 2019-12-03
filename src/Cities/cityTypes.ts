@@ -1,4 +1,4 @@
-interface City {
+interface CityTypes {
     city: string,
     country: string,
     locations: Location[],
@@ -11,5 +11,5 @@ interface Location {
 
 
 export {
-    City,Location
+    CityTypes,Location
 }

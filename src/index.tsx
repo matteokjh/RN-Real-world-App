@@ -11,7 +11,7 @@ import { colors } from './theme'
 import { MaterialCommunityIcons } from 'react-native-vector-icons'
 
 const CitiesNav = createStackNavigator({
-    Cities: { 
+    Cities: {
         screen: Cities,
         navigationOptions: {
             title: 'Cities'
@@ -24,7 +24,7 @@ const CitiesNav = createStackNavigator({
         })
     }
 }, {
-    defaultNavigationOptions: ({ navigation }) => ({
+    defaultNavigationOptions: () => ({
         headerStyle: {
             backgroundColor: colors.primary
         },
@@ -38,7 +38,7 @@ const CitiesNav = createStackNavigator({
 })
 
 const Tabs = createBottomTabNavigator({
-    Cities: { 
+    CitiesTab: { 
         screen: CitiesNav,
         navigationOptions: {
             tabBarLabel: null,
