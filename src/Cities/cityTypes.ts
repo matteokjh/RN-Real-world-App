@@ -2,7 +2,7 @@ interface CityTypes {
     city: string,
     country: string,
     locations: Location[],
-    id: number,
+    id: string,
 }
 interface Location {
     name: string,

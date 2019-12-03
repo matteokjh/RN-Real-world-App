@@ -1,11 +1,13 @@
-import React from 'react'
+import React,{ useState, useEffect } from 'react'
 import {
     View,
     Text,
     StyleSheet,
     ScrollView,
     TouchableHighlight,
-    TouchableOpacity
+    TouchableOpacity,
+    Animated,
+    AsyncStorage
 } from 'react-native'
 import { SwipeListView } from 'react-native-swipe-list-view'
 import Icon from 'react-native-vector-icons/AntDesign'
@@ -15,18 +17,47 @@ import { CityTypes } from './cityTypes'
 import CenterMsg from '../components/CenterMsg'
 import { px2dp } from '@/utils/dimensions'
 
+interface swipehiddenType {
+    direction: 'left' | 'right',
+    isOpen: boolean,
+    key: string,
+    value: number
+}
 
 export default function Cities(props: any) {
+    // const [animationIsRunning, setAnimationIsRunning] = useState(false)
+    // const [listViewData, setListViewData] = useState([])
+    // AsyncStorage.getItem('cities').then(res=>{
+    //     console.log(res)
+    //     setListViewData(JSON.parse(res))
+    // })
+    // let obj = {}
+    // props.screenProps.cities.forEach(e => {
+    //     obj[e.id] = new Animated.Value(1)
+    // })
+    // const animateVal = obj
 
     const viewCity = (cityObj: CityTypes) => {
         props.navigation.navigate('City',{ cityObj, title: cityObj.city })
     }
-    const deleteRow = (rowId: number) => {
-        console.log(rowId)
+    const deleteRow = async (rowId: string, rowMap: any) => {
+        await props.screenProps.delCity(rowId)
+        await rowMap[rowId].closeRow()
     }
-    const handleSwipeChange = (val) => {
-        // console.log(val)
-    }
+    // const handleSwipeChange = (data: swipehiddenType) => {
+    //     const { key, value } = data;
+    //     // 375 or however large your screen is (i.e. Dimensions.get('window').width)
+    //     if (value < px2dp(-650) && !animationIsRunning) {
+    //         setAnimationIsRunning(true)
+    //         Animated.timing(animateVal[key], { toValue: 0, duration: 200 }).start(() => {
+    //             const newData = [...listViewData];
+    //             const prevIndex = listViewData.findIndex((item: CityTypes) => item.id === key);
+    //             newData.splice(prevIndex, 1);
+    //             setListViewData(newData)
+    //             setAnimationIsRunning(false)
+    //         });
+    //     }
+    // }
 
     return (
         <ScrollView style={styles.ScrollView}>
@@ -36,7 +67,7 @@ export default function Cities(props: any) {
                 }
                 <SwipeListView
                     data={props.screenProps.cities}
-                    listKey="id"
+                    keyExtractor={(item: CityTypes) => item.id.toString()}
                     renderItem={ (data: {item: CityTypes}) => (
                         <TouchableHighlight
                             underlayColor='#999'
@@ -51,11 +82,9 @@ export default function Cities(props: any) {
                     renderHiddenItem={ (data, rowMap) => (
                         <View style={styles.deleteBtn}>
                             <TouchableOpacity
-                                style={[
-                                    styles.backRightBtn
-                                ]}
+                                style={styles.backRightBtn}
                                 onPress={() =>
-                                    deleteRow(data.item.id)
+                                    deleteRow(data.item.id, rowMap)
                                 }
                             >
                                 <Text style={styles.backTextWhite}>
@@ -67,23 +96,8 @@ export default function Cities(props: any) {
                     rightOpenValue={-75}
                     leftOpenValue={75}
                     disableRightSwipe
-                    onSwipeValueChange={handleSwipeChange}
+                    // onSwipeValueChange={(data) => handleSwipeChange(data)}
                 />
-                    {/* {
-                        props.screenProps.cities.map((cityObj: CityTypes, idx: number) => (
-                            <View key={idx}>
-                                <TouchableHighlight
-                                    underlayColor='#999'
-                                    onPress={() => viewCity(cityObj)}
-                                >
-                                    <View style={styles.cityContainer}>
-                                        <Text style={styles.city}>{cityObj.city}</Text>
-                                        <Text style={styles.country}>{cityObj.country}</Text>
-                                    </View>
-                                </TouchableHighlight>
-                            </View>
-                        ))
-                    } */}
             </View>
         </ScrollView>
     )

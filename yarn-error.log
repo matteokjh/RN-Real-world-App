@@ -1,5 +1,5 @@
 Arguments: 
-  D:\node\node.exe D:\node\node_modules\yarn\bin\yarn.js add -D @types/react-native-expo-viewport-units
+  D:\node\node.exe D:\node\node_modules\yarn\bin\yarn.js add @types/react-native-animation-hooks -D
 
 PATH: 
   C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;D:\bash\Git\cmd;D:\node\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Users\Matteokjh\Desktop\resume\wkhtmltopdf\bin;C:\Program Files (x86)\PuTTY\;D:\node\node_global;G:\androidSDK\platform-tools;K:\HelloWorld\python\Scripts\;K:\HelloWorld\python\;C:\Users\Matteokjh\AppData\Local\Microsoft\WindowsApps;;D:\vscode\Microsoft VS Code\bin;C:\Users\Matteokjh\AppData\Roaming\npm;K:\fiddler;C:\Users\Matteokjh\AppData\Local\Microsoft\WindowsApps
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.npmjs.org/@types%2freact-native-expo-viewport-units: Not found
+  Error: https://registry.npmjs.org/@types%2freact-native-animation-hooks: Not found
       at Request.params.callback [as _callback] (D:\node\node_modules\yarn\lib\cli.js:66830:18)
       at Request.self.callback (D:\node\node_modules\yarn\lib\cli.js:140464:22)
       at Request.emit (events.js:198:13)
@@ -41,10 +41,11 @@ npm manifest:
       "react": "16.8.3",
       "react-dom": "16.8.3",
       "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
-      "react-native-expo-viewport-units": "^0.0.8",
+      "react-native-animation-hooks": "^1.0.1",
       "react-native-gesture-handler": "^1.5.2",
       "react-native-reanimated": "^1.4.0",
       "react-native-screens": "^2.0.0-alpha.15",
+      "react-native-swipe-list-view": "^2.0.6",
       "react-native-vector-icons": "^6.6.0",
       "react-native-web": "^0.11.7",
       "react-navigation": "^4.0.10",
@@ -58,6 +59,7 @@ npm manifest:
       "@types/react-native-vector-icons": "^6.4.4",
       "@types/react-navigation": "^3.4.0",
       "@types/uuid": "^3.4.6",
+      "babel-plugin-root-import": "^6.4.1",
       "babel-preset-expo": "^7.1.0",
       "typescript": "^3.6.3"
     },
@@ -1351,6 +1353,13 @@ Lockfile:
     version "0.11.7"
     resolved "https://registry.yarnpkg.com/babel-plugin-react-native-web/-/babel-plugin-react-native-web-0.11.7.tgz#15b578c0731bd7d65d334f9c759d95e8e4a602e2"
     integrity sha512-CxE7uhhqkzAFkwV2X7+Mc/UVPujQQDtja/EGxCXRJvdYRi72QTmaJYKbK1lV9qgTZuB+TDguU89coaA9Z1BNbg==
+  
+  babel-plugin-root-import@^6.4.1:
+    version "6.4.1"
+    resolved "https://registry.yarnpkg.com/babel-plugin-root-import/-/babel-plugin-root-import-6.4.1.tgz#5c0dfe7588778b1933764c913fa3ed1c78150bf6"
+    integrity sha512-xwEwOwilsg4ZJr5I8bySvpwxCfF4lhYtqySktyTyAG8gcyDYTIDjjvds8P+IHb5gTbM/jiE9hU8e5ZQPQv8TrA==
+    dependencies:
+      slash "^3.0.0"
   
   babel-plugin-syntax-trailing-function-commas@^7.0.0-beta.0:
     version "7.0.0-beta.0"
@@ -4388,15 +4397,15 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
     integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
   
+  react-native-animation-hooks@^1.0.1:
+    version "1.0.1"
+    resolved "https://registry.yarnpkg.com/react-native-animation-hooks/-/react-native-animation-hooks-1.0.1.tgz#fcda58867d708084cc63c6fcd001f5375a40f45b"
+    integrity sha512-s1o71m9sPpEYwFpHTdBouO50jzvyxIVB4MmNwfVGgPWkdL02zKOzyXcNuPJmoCuLIstUj5TBEwtnGk1WMFJx5A==
+  
   react-native-branch@~3.0.1:
     version "3.0.1"
     resolved "https://registry.yarnpkg.com/react-native-branch/-/react-native-branch-3.0.1.tgz#5b07b61cbd290168cd3c3662e017ebe0f356d2ca"
     integrity sha512-vbcYxPZlpF5f39GAEUF8kuGQqCNeD3E6zEdvtOq8oCGZunHXlWlKgAS6dgBKCvsHvXgHuMtpvs39VgOp8DaKig==
-  
-  react-native-expo-viewport-units@^0.0.8:
-    version "0.0.8"
-    resolved "https://registry.yarnpkg.com/react-native-expo-viewport-units/-/react-native-expo-viewport-units-0.0.8.tgz#13d9bcb3e95abcc55f800cfa5f3e4b571860e726"
-    integrity sha512-duAEaoVF41puhXhpI1BuDFc2AMBqfWT2S74EJqaQ5dnuZVhsP++AExJwVo7/2/lHmb6+gYWGyBZOxxPCMWe+Ew==
   
   react-native-gesture-handler@^1.5.2:
     version "1.5.2"
@@ -4433,6 +4442,11 @@ Lockfile:
     integrity sha512-Nn4PRFSKLkP0MTXwqOIhMypJ7GMhcU+AZgFJd0DFQhNyU5sLNlKGEzQS6jRY+4MtHJnDXoMOr/o2l9WrI/O3Mg==
     dependencies:
       debounce "^1.2.0"
+  
+  react-native-swipe-list-view@^2.0.6:
+    version "2.0.6"
+    resolved "https://registry.yarnpkg.com/react-native-swipe-list-view/-/react-native-swipe-list-view-2.0.6.tgz#0dd6ab94b881e0d3b173ea30c5b44f1f14f50a83"
+    integrity sha512-z/BzShXTfR/AmwZVmxW++8i3T+L+BlYBAI4jNbfMd5Uus9/UopQqi4mZB/ak00ctE+o3Z+8TzMH9WDzy3d7GWg==
   
   react-native-tab-view@^2.11.0:
     version "2.11.0"
@@ -4960,6 +4974,11 @@ Lockfile:
     version "2.0.0"
     resolved "https://registry.yarnpkg.com/slash/-/slash-2.0.0.tgz#de552851a1759df3a8f206535442f5ec4ddeab44"
     integrity sha512-ZYKh3Wh2z1PpEXWr0MpSBZ0V6mZHAQfYevttO11c51CaWjGTaadiKZ+wVt1PbMlDV5qhMFslpZCemhwOK7C89A==
+  
+  slash@^3.0.0:
+    version "3.0.0"
+    resolved "https://registry.yarnpkg.com/slash/-/slash-3.0.0.tgz#6539be870c165adbd5240220dbe361f1bc4d4634"
+    integrity sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==
   
   slide@^1.1.5:
     version "1.1.6"

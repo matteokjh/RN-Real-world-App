@@ -19,6 +19,11 @@ export default function App() {
     AsyncStorage.setItem(key, JSON.stringify(cities.concat(city)))
       .catch((err) => console.log(err))
   }
+  const delCity = (id: string) => {
+    setCities(cities.filter(e=>e.id !== id))
+    AsyncStorage.setItem(key, JSON.stringify(cities.filter(e=>e.id !== id)))
+      .catch((err) => console.log(err))
+  }
   const addLocation = (location: Location, city: CityTypes) => {
     const idx = cities.findIndex(item => item.id === city.id)
     const chosenCity = cities[idx]
@@ -49,7 +54,8 @@ export default function App() {
       screenProps={{
         cities,
         addCity,
-        addLocation
+        addLocation,
+        delCity
       }}
     />
   )
